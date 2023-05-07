@@ -2,7 +2,7 @@ var userList;
 var client = {
   socket: null,
   InitMsg: function (name) {
-    this.socket = io("http://localhost:3000");
+    this.socket = io("http://" + location.hostname + ":3000");
     this.socket.emit("init", name);
     this.socket.on("init", (msg) => {
       userList = msg;
