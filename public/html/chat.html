@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="nav">
+      <span class="nav-title">Author</span>
+      <div>
+        <img class="author-img" src="img/logo.jpg" alt="" />
+        <span class="author-name">YU, ZHENG</span>
+      </div>
+      <span class="nav-title">Navigation</span>
+      <ul class="nav-content">
+        <li><a href="#" onclick="jump2Page('home')">Introduction</a></li>
+        <li><a href="#" onclick="jump2Page('about')">About</a></li>
+        <li><a href="#" onclick="jump2Page('chat')">Chat application</a></li>
+      </ul>
+      <span class="nav-title">Links</span>
+      <ul class="nav-links">
+        <li><a href="https://github.com/FaterYU" target="_blank">Github</a></li>
+        <li><a href="https://fater.top/" target="_blank">Blog</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="chat">
+        <h1>Chat Application</h1>
+        <div class="chat-broadcast">
+          <div class="broadcast-info">Welcome to the chat room</div>
+        </div>
+        <div class="chat-dialog">
+          <div class="hint">---The above is the historical record---</div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="input" placeholder="Please input your name" />
+          <button type="button" id="send" onclick="submit()">Submit</button>
+        </div>
+        <div class="chat-userlist">
+          <div class="userlist-title">
+            User List
+            <br />
+            <p class="alive">Alive</p>
+            <p class="typing">Typing</p>
+          </div>
+
+          <div class="userlist-content"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io@4.6.1/client-dist/socket.io.min.js"></script>
+    <script src="js/chat.js"></script>
+  </body>
+</html>

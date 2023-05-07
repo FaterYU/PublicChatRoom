@@ -1,0 +1,23 @@
+{
+  "name": "publicchatroom",
+  "version": "1.0.0",
+  "description": "Programming assignment of  CS2053 – Web Application Development",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FaterYU/PublicChatRoom.git"
+  },
+  "author": "FaterYU",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FaterYU/PublicChatRoom/issues"
+  },
+  "homepage": "https://github.com/FaterYU/PublicChatRoom#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
+}
