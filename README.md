@@ -70,6 +70,18 @@ In the scheme verification phase, I used [Net](https://nodejs.org/api/net.html) 
 
 The website is consist of three pages: introduction page, about page and chat application page. The introduction page is the home page of the website. The about page is the page that introduces myself. The chat application page is the page that implements the chat application.
 
+### Introduction page
+
+![result-1](img/result-1.png)
+
+### About page
+
+![result-2](img/result-2.png)
+
+### Chat Application page
+
+![result-0](img/result-0.png)
+
 ### Chat application
 
 The chat application page is the page that implements the chat application. The chat application page is consist of four parts: the message display area, the message input area, the user list area and the boardcast area.
@@ -117,7 +129,7 @@ The client is implemented by using Socket.IO. The client need to listen and emit
 
 The page style is implemented by using CSS. In this Project, I use CSS to implement the result as follows:
 
-![Alt text](img/css-0.png)
+![css](img/css-0.png)
 
 #### Listen and Emit Server Events
 
