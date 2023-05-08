@@ -94,4 +94,61 @@ In addition to the source code of the page, the site also needs to load a portio
 
 #### Publish and subscribe
 
-The server define a class to storage the information of all users who are currently online.
+The server define a class to storage the information of all users who are currently online. It stores the user id, username, create time and typing state of each user.
+The server use the Socket.IO to implement the publish and subscribe function.
+Following the above figure, the server will execute the following steps to listen these events when server is run:
+
+![server](img/server.png)
+
+##### Listen and Emit Client Events
+
+- init: When the client is connected to the server, the server will create a new user object to store the information of the user. The server will also send the user list to the client.
+- state: When the client is typing, the client will send the typing state to the server. The server will update the typing state of the user.
+- chat: When the client sends a message, the client will send the message to the server. The server will send the message to all clients.
+- disconnect: When the client is disconnected from the server, the server will delete the user object of the user. The server will also send the user list to the client.
+
+### Client
+
+The client is implemented by using Socket.IO. The client need to listen and emit the same events as the server. The client also need to listen and emit the following events:
+
+![client](img/client.png)
+
+### Page Style
+
+The page style is implemented by using CSS. In this Project, I use CSS to implement the result as follows:
+
+![Alt text](img/css-0.png)
+
+#### Listen and Emit Server Events
+
+- init: When the client is connected to the server, the server will send the user list to the client. The client will update the user list.
+- state: When the client is typing, the server will send the typing state of the user to the client. The client will update the typing state of the user. When user is typing, the client will send the typing state to the server. The server will update the typing state of the user.
+- chat: When the client receives a message, the client will display the message. When the client sends a message, the client will send the message to the server. The server will send the message to all clients.
+- come: When the client receives a user login event, the client will display the user login event.
+- leave: When the client receives a user logout event, the client will display the user logout event.
+
+## Challenges
+
+### The difference between TCP and WebSocket
+
+- The TCP protocol is a connection-oriented protocol.
+- The WebSocket protocol is a connectionless protocol.
+- The TCP protocol is a full-duplex protocol.
+- The WebSocket protocol is a full-duplex protocol.
+- The TCP protocol is a stream protocol.
+- The WebSocket protocol is a message protocol.
+- The TCP protocol is a reliable protocol.
+- The WebSocket protocol is a unreliable protocol.
+- The TCP protocol is a protocol that requires a handshake.
+- The WebSocket protocol is a protocol that requires a handshake.
+
+### Weakness of My Project
+
+- The chat application is a public chat room. It does not support private chat.
+- The Website is static resource loading. It does not support page routing.
+- The Website loadding static resources need much time. It does not support lazy loading.
+
+## References
+
+- [Node.js](https://nodejs.org/en/)
+- [Socket.IO Documentation](https://socket.io/docs/v4/)
