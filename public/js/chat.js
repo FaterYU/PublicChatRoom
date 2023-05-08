@@ -1,4 +1,5 @@
 var userList;
+// init client
 var client = {
   socket: null,
   InitMsg: function (name) {
@@ -31,12 +32,14 @@ var client = {
     });
   },
 };
+// listen to enter key
 document.getElementById("input").addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     document.getElementById("send").click();
   }
 });
+// catch typing event
 var typing = false;
 document.getElementById("input").addEventListener("input", function (event) {
   if (client.socket != null && !typing && event.data != null) {
@@ -47,6 +50,7 @@ document.getElementById("input").addEventListener("input", function (event) {
     client.socket.emit("state", "Alive");
   }
 });
+// update chat user list
 function updateUserList() {
   var userlist = document.getElementsByClassName("userlist-content")[0];
   userlist.innerHTML = "";
@@ -62,6 +66,7 @@ function updateUserList() {
     userlist.appendChild(li);
   }
 }
+// create broadcast info when user come
 function createBroadcastCome(msg) {
   var broadcast = document.getElementsByClassName("chat-broadcast")[0];
   var broadcast_info = document.createElement("div");
@@ -70,6 +75,7 @@ function createBroadcastCome(msg) {
   broadcast.appendChild(broadcast_info);
   broadcast.scrollTop = broadcast.scrollHeight;
 }
+// create broadcast info when user leave
 function createBroadcastLeave(msg) {
   var broadcast = document.getElementsByClassName("chat-broadcast")[0];
   var broadcast_info = document.createElement("div");
@@ -78,6 +84,7 @@ function createBroadcastLeave(msg) {
   broadcast.appendChild(broadcast_info);
   broadcast.scrollTop = broadcast.scrollHeight;
 }
+// create dialog when user chat
 function createDialogOther(msg) {
   var name = userList[msg.sender].userName;
   var parp = document.createElement("p");
@@ -89,6 +96,7 @@ function createDialogOther(msg) {
   chat_dialog.appendChild(parp);
   chat_dialog.appendChild(dialog);
 }
+// create dialog when self chat
 function createDialogSelf(msg) {
   var name = userList[msg.sender].userName;
   var parp = document.createElement("p");
@@ -101,9 +109,11 @@ function createDialogSelf(msg) {
   chat_dialog.appendChild(dialog);
   chat_dialog.scrollTop = chat_dialog.scrollHeight;
 }
+// jump to page
 function jump2Page(path) {
   window.location.href = window.location.origin + "/" + path;
 }
+// submit message
 function submit() {
   var input_doc = document.getElementById("input");
   if (input_doc.value == "") {

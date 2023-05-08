@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-
+// export static files
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
@@ -19,10 +19,10 @@ app.get("/about", (req, res) => {
 app.get("/chat", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "html/chat.html"));
 });
-
+// init server
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
-
+// define client class
 class Client {
   constructor(id, userName) {
     this.id = id;
@@ -31,9 +31,9 @@ class Client {
     this.state = "Alive";
   }
 }
-
+// define clients to store all clients
 var clients = {};
-
+// server events
 io.on("connection", (socket) => {
   socket.on("init", (userName) => {
     var clientObj = new Client(socket.id, userName);
@@ -60,7 +60,7 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("leave", socket.id);
   });
 });
-
+// start server
 server.listen(3000, () => {
   console.log("Server listening on port 3000!");
 });
